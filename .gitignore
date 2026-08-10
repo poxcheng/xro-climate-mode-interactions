@@ -1,0 +1,7 @@
+data/*
+!data/README.md
+figures/*
+!figures/.gitkeep
+*_repro.npz
+*_repro.pkl
+.ipynb_checkpoints/

@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this reproduction package, please cite the paper below."
+title: "Reproduction package for: Climate Mode Interactions Shape El Niño-Driven Tropical Ocean and Atmospheric Warming"
+authors:
+  - family-names: Chen
+    given-names: Po-Cheng
+  - family-names: Jin
+    given-names: Fei-Fei
+  - family-names: Zhao
+    given-names: Sen
+version: v1.0.0-review
+date-released: "2026-08-10"
+preferred-citation:
+  type: article
+  title: "Climate Mode Interactions Shape El Niño-Driven Tropical Ocean and Atmospheric Warming"
+  authors:
+    - family-names: Chen
+      given-names: Po-Cheng
+    - family-names: Jin
+      given-names: Fei-Fei
+    - family-names: Zhao
+      given-names: Sen
+  journal: "Nature Communications (submitted)"
+  year: 2026
