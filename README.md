@@ -38,21 +38,29 @@ and mount Drive; locally, use the pinned environment instead.
 
 Both engines run in reproduction mode (`FORCE_RECOMPUTE = True`):
 
-| stage | runtime (Apple M-series laptop) |
+| stage | runtime (verified clean run, Apple Silicon, Python 3.13) |
 |---|---|
 | Observed replay engine (Sec. 2) | ≈ 1 min |
-| 88-model CMIP hybrid engine (Sec. 9) | ≈ 10–15 min |
+| 88-model CMIP hybrid engine (Sec. 9) | ≈ 9 min |
 | All remaining figure cells | ≈ 2 min |
+| **Full notebook, top to bottom** | **≈ 12 min** |
 
 The supplied `data/reference_cache/` files are **never read**. Recomputed results are written to
-`*_repro` files, which can be diffed against the reference caches for a bit-for-bit check.
+`./outputs_cache/*_repro*` files, which can be diffed against the reference caches.
 The forecast ensemble (Fig. 10) uses a fixed random seed and is deterministic.
+
+**Verification (clean-room run, 2026-08-10, macOS/Python 3.13, pinned environment):** all 30 cells
+executed top-to-bottom with no errors; recomputed engine outputs agree with the reference caches to
+max |diff| ≤ 5.3e-08 K (observed replay, all arrays) and ≤ 1.9e-06 K (CMIP engine, 6,090 numeric
+blocks across all 2,024 model-experiment series); the regenerated figures are visually identical to
+the manuscript figures.
 
 ## Expected outputs
 
 Ten figures matching main-text Figs. 1–10 (Sections 4–8 and 10–13 of the notebook; Section 11
-produces both Figs. 7 and 8). Rendered figure outputs from a complete author run are stored in
-the notebook itself for reference. PNG copies are written to `./figures`.
+produces both Figs. 7 and 8). Figs. 1–5 render inline in the notebook; Figs. 6–10 are additionally
+written to `./figures` as PNG (Fig. 10 also as PDF). Rendered outputs from a complete author run
+are stored in the notebook itself for reference.
 
 ## Verify data integrity
 
