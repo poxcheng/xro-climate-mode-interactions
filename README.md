@@ -1,14 +1,13 @@
 # Reproduction package — "Climate Mode Interactions Shape El Niño-Driven Tropical Ocean and Atmospheric Warming"
 
 Po-Cheng Chen, Fei-Fei Jin, Sen Zhao (University of Hawaiʻi at Mānoa)
-Manuscript submitted to *Nature Communications*.
 
 This package reproduces **all ten main-text figures** of the manuscript from upstream inputs.
 
 ## Contents
 
 ```
-Full_code_reproduce_NC_v2.ipynb   # the complete reproduction notebook (run top-to-bottom)
+Full_code_reproduce_v1.ipynb      # the complete reproduction notebook (run top-to-bottom)
 environment.yml                   # pinned conda environment (tested)
 requirements.txt                  # pinned pip environment (tested)
 data/                             # all required inputs (~825 MB) — see data_manifest.tsv
@@ -26,7 +25,7 @@ CITATION.cff
 ```bash
 conda env create -f environment.yml     # or: pip install -r requirements.txt
 conda activate xro-repro
-jupyter lab Full_code_reproduce_NC_v2.ipynb
+jupyter lab Full_code_reproduce_v1.ipynb
 ```
 
 Run all cells in order. Paths are relative: the notebook expects `./data` next to it and writes
