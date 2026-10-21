@@ -1,8 +1,8 @@
-# Reproduction package — "Climate Mode Interactions Shape El Niño-Driven Tropical Ocean and Atmospheric Warming"
+# Reproduction package — "Climate mode interactions shape El Niño-driven tropical ocean and atmospheric warming"
 
 Po-Cheng Chen, Fei-Fei Jin, Sen Zhao (University of Hawaiʻi at Mānoa)
 
-This package reproduces **all ten main-text figures** of the manuscript from upstream inputs.
+This package reproduces **all ten main-text figures** of the manuscript from upstream inputs, and, via `revision_figs/`, the figures added or redesigned in the first revision (Fig. 1, Fig. 10, and Supplementary Figs. 1-4).
 
 ## Contents
 
@@ -12,12 +12,13 @@ environment.yml                   # pinned conda environment (tested)
 requirements.txt                  # pinned pip environment (tested)
 data/                             # all required inputs (~825 MB) — see data_manifest.tsv
   ├── reference_cache/            #   author-generated engine caches (never read by the notebook)
-  └── pocheng_tropical_mean_SST_XRO/  # per-model CMIP5/6 XRO operator fits (88 models, Supplementary Table 1)
+  └── pocheng_tropical_mean_SST_XRO/  # per-model CMIP5/6 XRO operator fits (88 models, Supplementary Data 1)
 figures/                          # output directory (created/filled by the notebook)
 data_manifest.tsv                 # SHA-256 checksums + provenance for every data file
 DATA_TERMS.md                     # per-source data licenses, attribution, and citations
 LICENSE                           # MIT (applies to original code in this package only)
 CITATION.cff
+revision_figs/                    # standalone scripts for the figures added in revision R1 (see below)
 ```
 
 ## Quick start
@@ -79,3 +80,25 @@ https://doi.org/10.5281/zenodo.10681114.
 ## Contact
 
 Po-Cheng Chen — pocheng@hawaii.edu
+
+## Revision figures (R1)
+
+The first-revision figures are produced by standalone scripts in `revision_figs/`. Each script
+resolves the input directory from the `XRO_DATA_DIR` environment variable (default `./data`
+next to this README, the same data as the notebook) and writes its PNG to the current working
+directory.
+
+| script | manuscript item | inputs |
+|---|---|---|
+| `fig01_timeseries.py` | Fig. 1 | `data/` + `intermediates/ltt_depth_check.pkl` |
+| `fig10_forecast.py` | Fig. 10 and Supplementary Fig. 3 | `data/` (runs `forecast_engine.py`; fixed seed, deterministic) |
+| `si_fig1_obs_support.py` | Supplementary Fig. 1 | `data/` + `intermediates/` |
+| `si_fig2_removal.py` | Supplementary Fig. 2 | `intermediates/rm1d.pkl` |
+| `si_fig4_mode_contrib.py` | Supplementary Fig. 4 | `intermediates/mode_contrib.pkl` |
+
+`forecast_engine.py` is the self-contained real-time forecast engine (OISST and WWV initial
+conditions, operational XRO configuration, 1000-member red-noise ensemble with a fixed seed).
+`revision_figs/intermediates/` ships the small pickled intermediates used by the scripts;
+`revision_figs/make_intermediates/` contains the scripts that recompute every intermediate from
+`data/` (for `rm1d.py`, by re-running the CMIP hybrid engine of the main notebook with the
+coupling-removal cases), so the full chain from upstream inputs to every figure is reproducible.
