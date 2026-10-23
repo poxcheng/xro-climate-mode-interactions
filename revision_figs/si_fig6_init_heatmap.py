@@ -104,10 +104,6 @@ for r, (name, rtitle, vlim) in enumerate(ROWS):
         im = ax.pcolormesh(xi, yi, Z, cmap="RdBu_r", vmin=-vlim, vmax=vlim, shading="auto")
         if r == 0: ims["top"] = im
         else: ims["sub"] = im
-        # mark the observed months (recon) along the init=target diagonal
-        for i, t in enumerate(INITS):
-            k = tgt_idx[t.strftime("%Y-%m")]
-            ax.plot([k], [i], marker="o", ms=2.6, color="k", mfc="none", mew=0.7)
         ax.set_title(f"({PL[r*2+c]}) {VAR_NAME[v]}: {rtitle}", loc="left", fontsize=FS["panel_title"])
         ax.set_xticks(xticks); ax.set_xticklabels(xtlab)
         ax.set_yticks(yi); ax.set_yticklabels(ytlab)
