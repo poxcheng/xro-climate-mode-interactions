@@ -2,7 +2,7 @@
 
 Po-Cheng Chen, Fei-Fei Jin, Sen Zhao (University of Hawaiʻi at Mānoa)
 
-This package reproduces **all ten main-text figures** of the manuscript from upstream inputs, and, via `revision_figs/`, the figures added or redesigned in the first revision (Fig. 1, Fig. 10, and Supplementary Figs. 1-4).
+This package reproduces **all ten main-text figures** of the manuscript from upstream inputs, and, via `revision_figs/`, the figures added or redesigned in the first revision and its follow-up (Fig. 1, Fig. 10, and Supplementary Figs. 1-6). All figures use the enlarged font sizes of the revised manuscript.
 
 ## Contents
 
@@ -18,7 +18,7 @@ data_manifest.tsv                 # SHA-256 checksums + provenance for every dat
 DATA_TERMS.md                     # per-source data licenses, attribution, and citations
 LICENSE                           # MIT (applies to original code in this package only)
 CITATION.cff
-revision_figs/                    # standalone scripts for the figures added in revision R1 (see below)
+revision_figs/                    # standalone scripts for the figures added in revision R1 and its follow-up (see below)
 ```
 
 ## Quick start
@@ -95,9 +95,16 @@ directory.
 | `si_fig1_obs_support.py` | Supplementary Fig. 1 | `data/` + `intermediates/` |
 | `si_fig2_removal.py` | Supplementary Fig. 2 | `intermediates/rm1d.pkl` |
 | `si_fig4_mode_contrib.py` | Supplementary Fig. 4 | `intermediates/mode_contrib.pkl` |
+| `si_fig5_event_2023_24.py` | Supplementary Fig. 5 | `data/` (re-runs the notebook replay cells; caches to `outputs_cache/`) |
+| `si_fig6_init_heatmap.py` | Supplementary Fig. 6 | `data_r2/` + `engine_core.py` |
 
 `forecast_engine.py` is the self-contained real-time forecast engine (OISST and WWV initial
-conditions, operational XRO configuration, 1000-member red-noise ensemble with a fixed seed).
+conditions, operational XRO configuration, 1000-member red-noise ensemble with a fixed seed);
+`engine_core.py` is the same engine with the initialization month and input files exposed as
+environment variables (`XRO_INIT`, `XRO_OISST_FILE`, `XRO_WWV_FILE`). `revision_figs/data_r2/`
+ships the real-time OISST index and PMEL/TAO WWV files extended through September 2026 that
+Supplementary Fig. 6 requires, and `build_realtime_data.py` rebuilds them from the public
+NOAA/PSL OPeNDAP server and the PMEL warm water volume product.
 `revision_figs/intermediates/` ships the small pickled intermediates used by the scripts;
 `revision_figs/make_intermediates/` contains the scripts that recompute every intermediate from
 `data/` (for `rm1d.py`, by re-running the CMIP hybrid engine of the main notebook with the

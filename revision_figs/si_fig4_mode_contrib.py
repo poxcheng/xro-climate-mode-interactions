@@ -38,13 +38,13 @@ for ax, var, lab in zip(axes, ["SST", "LTT"], ["a", "b"]):
     for xi, (c, s) in enumerate(zip(comp.values, shares.values)):
         off = 0.003 if c >= 0 else -0.003
         va = "bottom" if c >= 0 else "top"
-        ax.text(xi, c + off, f"{c:.3f}", ha="center", va=va, fontsize=8.5)
+        ax.text(xi, c + off, f"{c:.3f}", ha="center", va=va, fontsize=10.2)
 
     ax.set_ylabel("Contribution (K)")
     ax.set_title(f"({lab}) Tropical-mean {var}, Nov(0)-Feb(+1) composite",
-                 loc="left", fontsize=10.5)
+                 loc="left", fontsize=12.6)
     ax.set_xticks(x)
-    ax.set_xticklabels(XLAB, fontsize=9)
+    ax.set_xticklabels(XLAB, fontsize=10.8)
     ax.tick_params(length=3)
     ax.spines[["top", "right"]].set_visible(False)
     ax.set_ylim(comp.values.min() - 0.015, comp.values.max() + 0.015)
@@ -54,10 +54,10 @@ axes[0].legend(handles=[
     plt.Rectangle((0, 0), 1, 1, fc="#4393c3", alpha=0.85, label="Pacific meridional"),
     plt.Rectangle((0, 0), 1, 1, fc="#e08214", alpha=0.85, label="Indian Ocean"),
     plt.Rectangle((0, 0), 1, 1, fc="#762a83", alpha=0.85, label="Atlantic"),
-], fontsize=8.5, frameon=False, loc="upper right", ncol=2)
+], fontsize=10.2, frameon=False, loc="upper right", ncol=2)
 
 fig.suptitle("Individual mode contributions to the composite tropical-mean warming",
-             fontsize=11.5, fontweight="bold")
+             fontsize=13.8, fontweight="bold")
 fig.tight_layout(rect=[0, 0, 1, 0.97])
 fig.savefig("FigS_mode_contrib.png", dpi=300, bbox_inches="tight")
 print("saved FigS_mode_contrib.png")

@@ -4,6 +4,8 @@ INT = os.path.join(HERE, "intermediates")
 DATA = os.environ.get("XRO_DATA_DIR", os.path.normpath(os.path.join(HERE, "..", "data")))
 import numpy as np, pandas as pd, xarray as xr, pickle
 import matplotlib; matplotlib.use("Agg")
+import matplotlib.pyplot as _plt
+_plt.rcParams["font.size"] = 12
 import matplotlib.pyplot as plt
 import matplotlib.patheffects as pe
 
@@ -32,11 +34,11 @@ ax.axhline(0, color="gray", lw=0.6)
 ax.set_ylabel("SST / LTT anomaly (K)")
 ax.set_ylim(-0.75, 0.75)
 ax.set_xlim(t[0], t[-1])
-ax.legend(loc="upper left", fontsize=9, framealpha=0.95)
+ax.legend(loc="upper left", fontsize=10.8, framealpha=0.95)
 ax.set_title("Tropical-mean (30S-30N) SST and LTT anomalies with standardized Nino3.4",
-             fontsize=10.5, loc="left")
+             fontsize=12.6, loc="left")
 cb = fig.colorbar(pm, ax=ax, pad=0.012, fraction=0.035)
-cb.set_label("standardized Nino3.4 (s.d.)", fontsize=9)
+cb.set_label("standardized Nino3.4 (s.d.)", fontsize=10.8)
 fig.tight_layout()
 fig.savefig("Fig1_new_v4.png", dpi=200)
 print("saved")

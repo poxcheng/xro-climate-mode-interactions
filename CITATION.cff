@@ -8,8 +8,8 @@ authors:
     given-names: Fei-Fei
   - family-names: Zhao
     given-names: Sen
-version: v1.1.0-revision
-date-released: "2026-10-21"
+version: v1.2.0-revision
+date-released: "2026-10-23"
 preferred-citation:
   type: article
   title: "Climate mode interactions shape El Niño-driven tropical ocean and atmospheric warming"

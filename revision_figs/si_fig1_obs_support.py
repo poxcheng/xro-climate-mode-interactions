@@ -4,6 +4,8 @@ INT = os.path.join(HERE, "intermediates")
 DATA = os.environ.get("XRO_DATA_DIR", os.path.normpath(os.path.join(HERE, "..", "data")))
 import numpy as np, pandas as pd, xarray as xr, pickle
 import matplotlib; matplotlib.use("Agg")
+import matplotlib.pyplot as _plt
+_plt.rcParams["font.size"] = 12
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 
@@ -42,8 +44,8 @@ pm = ax.pcolormesh(xb, yb, np.ma.masked_invalid(M).T, cmap=cmap, vmin=-0.45, vma
 # ax.scatter(rem8.values, n34.loc[common].values, s=2.5, color="gray", alpha=0.3, zorder=2)
 ax.axvline(0, color="k", lw=0.8); ax.axhline(0, color="k", lw=0.8)
 ax.set_xlabel("remote-mode index, all-8 mean (s.d.)"); ax.set_ylabel("Nino3.4 (s.d.)")
-ax.set_title("(a) Tropical-mean SST on the (modes, ENSO)\nplane, monthly binned mean 1979-2025", loc="left", fontsize=9.5)
-cb = fig.colorbar(pm, ax=ax, pad=0.02, fraction=0.05); cb.set_label("tropical-mean SST (K)", fontsize=8)
+ax.set_title("(a) Tropical-mean SST on the (modes, ENSO)\nplane, monthly binned mean 1979-2025", loc="left", fontsize=11.4)
+cb = fig.colorbar(pm, ax=ax, pad=0.02, fraction=0.05); cb.set_label("tropical-mean SST (K)", fontsize=9.6)
 
 # (b) event scatter all-8
 ax = axes[1]
@@ -53,14 +55,14 @@ OFF = {2023:(-44,2), 2015:(-44,2), 1997:(-44,-4), 2019:(-14,10), 1982:(10,-4), 2
 for ev in EV:
     dx,dy = OFF[ev]
     ax.annotate(str(ev), (REM8ev[ev], df.sst[ev]), textcoords="offset points", xytext=(dx,dy),
-                fontsize=8, arrowprops=dict(arrowstyle="-", lw=0.5, color="gray",
+                fontsize=9.6, arrowprops=dict(arrowstyle="-", lw=0.5, color="gray",
                                             shrinkA=0, shrinkB=4) if abs(dx)>20 or abs(dy)>12 else None)
 b = np.polyfit(REM8ev, df.sst, 1); xx = np.linspace(REM8ev.min(), REM8ev.max(), 10)
 ax.plot(xx, np.polyval(b, xx), "k--", lw=1)
 ax.axvline(0, color="gray", lw=0.6); ax.axhline(0, color="gray", lw=0.6)
 ax.set_xlabel("remote-mode index, all-8 mean (s.d.)"); ax.set_ylabel("Tropical-mean SST (K)")
-ax.set_title(f"(b) Event-mean SST vs remote modes\nr = {np.corrcoef(REM8ev,df.sst)[0,1]:+.2f}  (Nino3.4 alone r = {np.corrcoef(df.n34,df.sst)[0,1]:+.2f})", loc="left", fontsize=9.5)
-cbb = fig.colorbar(sc, ax=ax, pad=0.02, fraction=0.046); cbb.set_label("Nino3.4, Nov(0)-Feb(+1) (K)", fontsize=8)
+ax.set_title(f"(b) Event-mean SST vs remote modes\nr = {np.corrcoef(REM8ev,df.sst)[0,1]:+.2f}  (Nino3.4 alone r = {np.corrcoef(df.n34,df.sst)[0,1]:+.2f})", loc="left", fontsize=11.4)
+cbb = fig.colorbar(sc, ax=ax, pad=0.02, fraction=0.046); cbb.set_label("Nino3.4, Nov(0)-Feb(+1) (K)", fontsize=9.6)
 
 # (c) IOB at the Nino3.4 peak month vs 2 months later (C2-removal peak, Figs 4-5)
 ax = axes[2]
@@ -84,13 +86,13 @@ ax.plot(xx, np.polyval(b1, xx), color="tab:red", lw=1.7)
 ax.plot(xx, np.polyval(b2, xx), color="tab:blue", ls="--", lw=1.4)
 ax.axvline(0, color="gray", lw=0.6); ax.axhline(0, color="gray", lw=0.6)
 ax.set_xlabel("IOB index (s.d.)"); ax.set_ylabel("Tropical-mean SST (K)")
-ax.set_title("(c) As (b), IOB at single months tied to the Nino3.4 peak\nat the peak vs 2 months later (C2-removal peak in Figs. 4-5)", loc="left", fontsize=9.5)
+ax.set_title("(c) As (b), IOB at single months tied to the Nino3.4 peak\nat the peak vs 2 months later (C2-removal peak in Figs. 4-5)", loc="left", fontsize=11.4)
 handles=[Line2D([],[],marker="^",mec="tab:blue",mfc="none",color="tab:blue",ls="--",label=f"IOB at the Nino3.4 peak month, r={r0:+.2f}"),
          Line2D([],[],marker="o",color="tab:red",mec="k",ls="-",label=f"IOB 2 months after the peak, r={r2:+.2f}")]
-ax.legend(handles=handles, fontsize=8, loc="upper left")
+ax.legend(handles=handles, fontsize=9.6, loc="upper left")
 print(f"IOB@N34pk r={r0:+.2f}; IOB@N34pk+2 r={r2:+.2f}")
 
 fig.suptitle("Observational support (ERA5 / ORAS5, no XRO): remote climate modes and El Nino-driven tropical-mean SST",
-             fontsize=11.5, x=0.5, y=0.97)
+             fontsize=13.8, x=0.5, y=0.97)
 fig.savefig("obs_support_v25.png", dpi=160)
 print("saved")
