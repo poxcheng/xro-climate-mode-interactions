@@ -26,8 +26,8 @@ os.environ.setdefault("XRO_CACHE_DIR", os.path.normpath(os.path.join(HERE, "..",
 import numpy as np, pandas as pd, xarray as xr
 import matplotlib.pyplot as plt
 
-FS = {"base": 11, "panel_title": 11.5, "axis_label": 11.5, "tick": 10.5,
-      "legend": 9.0, "annot": 9.0, "suptitle": 12.5}
+FS = {"base": 15.4, "panel_title": 16.1, "axis_label": 16.1, "tick": 14.7,
+      "legend": 12.6, "annot": 12.6, "suptitle": 17.5}
 plt.rcParams.update({"font.size": FS["base"], "axes.labelsize": FS["axis_label"],
                      "xtick.labelsize": FS["tick"], "ytick.labelsize": FS["tick"]})
 
@@ -72,8 +72,8 @@ knc, kne = int(np.nanargmax(n34c)), int(np.nanargmax(n34e))
 assert knc == kne  # both Nino3.4 peaks fall on Dec(0); one shading serves both
 
 fig = plt.figure(figsize=(13.0, 13.6))
-gs = fig.add_gridspec(3, 2, left=0.065, right=0.985, top=0.885, bottom=0.055,
-                      hspace=0.34, wspace=0.17, height_ratios=[1.08, 1.0, 1.0])
+gs = fig.add_gridspec(3, 2, left=0.065, right=0.985, top=0.86, bottom=0.055,
+                      hspace=0.34, wspace=0.28, height_ratios=[1.08, 1.0, 1.0])
 axa = fig.add_subplot(gs[0, :])
 axb = fig.add_subplot(gs[1, 0])
 axc = fig.add_subplot(gs[1, 1], sharey=axb)
@@ -131,8 +131,8 @@ for ax, tag, s, show_right in PANELS:
     ax.bar(xm - bw / 2, yc, width=bw, color=CBLK, edgecolor="none")
     ax.bar(xm + bw / 2, ye, width=bw, color=CRED, edgecolor="none")
     nino_overlay(ax, show_right=show_right)
-    ax.set_xticks(xm[::3])
-    ax.set_xticklabels([mlab[i] for i in range(0, 24, 3)], fontsize=9)
+    ax.set_xticks(xm[::6])
+    ax.set_xticklabels([mlab[i] for i in range(0, 24, 6)], fontsize=12.6)
     ax.grid(alpha=0.2, lw=0.5)
     ax.set_title(tag, loc="left", fontsize=FS["panel_title"])
 axb.set_ylabel("LTT contribution (K)")
@@ -177,7 +177,7 @@ l = ["composite, n=12 (with 2023-24)", "composite, n=11 (without)", "2023-24 eve
      "Nino3.4, composite (n=11)", "Nino3.4, 2023-24",
      "Nino3.4 peak +/-1 mo (both Dec(0))"]
 fig.legend(h, l, fontsize=FS["legend"], loc="upper center", ncol=3, frameon=False,
-           bbox_to_anchor=(0.5, 0.945))
+           bbox_to_anchor=(0.5, 0.942))
 
 fp = os.path.join(FIGS, "FigS5_event_2023-24.png")
 fig.savefig(fp, dpi=300, bbox_inches="tight")

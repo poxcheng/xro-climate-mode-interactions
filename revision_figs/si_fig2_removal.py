@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as _plt
-_plt.rcParams["font.size"] = 12
+_plt.rcParams["font.size"] = 16.8
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
@@ -43,11 +43,11 @@ for ri, v in enumerate(("SST", "LTT")):
         ax.plot(rel, obs[(v, B)], color="k", lw=2.2)
         ax.axhline(0, color="0.6", lw=0.7)
         lab = {"C1": r"$C_1$=0", "C2": r"$C_2$=0", "L8off": r"$L_8^{off}$=0"}[B]
-        ax.set_title(f"({'abcdef'[ri*3+ci]}) {v}: {lab} $-$ BASE", loc="left", fontsize=12.6)
+        ax.set_title(f"({'abcdef'[ri*3+ci]}) {v}: {lab} $-$ BASE", loc="left", fontsize=17.6)
         ax.set_xticks(xt)
-        ax.set_xticklabels(xl, fontsize=10.2, rotation=30)
+        ax.set_xticklabels(xl, fontsize=14.3, rotation=30)
         if ci == 0:
-            ax.set_ylabel(f"tropical-mean {v} diff (K)")
+            ax.set_ylabel(f"{v} diff (K)")
 
 handles = [
     Line2D([], [], color="k", lw=2.2, label="OBS operator"),
@@ -58,11 +58,11 @@ handles = [
     Line2D([], [], color=CC["L8"], lw=1.4, ls="--", label=r"removal after $L_8\to$obs"),
     Line2D([], [], color=CC["LENSO"], lw=1.4, ls="--", label=r"removal after $L_{ENSO}\to$obs"),
 ]
-fig.legend(handles=handles, loc="lower center", ncol=4, fontsize=10.8, frameon=False,
+fig.legend(handles=handles, loc="lower center", ncol=4, fontsize=15.1, frameon=False,
            bbox_to_anchor=(0.5, 0.0))
 fig.suptitle(f"Coupling-removal experiments in the observed operator and {nM} CMIP operators\n"
              "tropical-mean composites of 9 ONI El Niño events, 1979-2010",
-             fontsize=14.4)
+             fontsize=20.2)
 fig.tight_layout(rect=[0, 0.06, 1, 0.94])
-fig.savefig("rm1d_final.png", dpi=160, bbox_inches="tight")
+fig.savefig("rm1d_final.png", dpi=300, bbox_inches="tight")
 print("saved rm1d_final.png")

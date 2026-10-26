@@ -19,8 +19,8 @@ FIGS = os.environ.get("XRO_FIG_DIR", HERE)
 import numpy as np, pandas as pd, xarray as xr
 import matplotlib.pyplot as plt
 
-FS = {"base": 11, "panel_title": 11.5, "axis_label": 11.5, "tick": 10.5,
-      "legend": 8.2, "annot": 9.5, "suptitle": 12.5}
+FS = {"base": 15.4, "panel_title": 16.1, "axis_label": 16.1, "tick": 14.7,
+      "legend": 11.5, "annot": 13.3, "suptitle": 17.5}
 plt.rcParams.update({"font.size": FS["base"], "axes.labelsize": FS["axis_label"],
                      "xtick.labelsize": FS["tick"], "ytick.labelsize": FS["tick"]})
 
@@ -79,9 +79,9 @@ obs_recon = {v: _to_trop(ost, omon, v) for v in ("SST", "LTT")}
 VAR_NAME = {"SST": "Tropical-mean SST", "LTT": "Tropical-mean LTT"}
 VLIM_ALL = 0.9
 ROWS = [("XRO", "Full XRO forecast", VLIM_ALL),
-        ("ExPO", "ExPO contribution (XRO - ExPO decoupled)", VLIM_ALL),
-        ("IO", "IO contribution (XRO - IO decoupled)", VLIM_ALL),
-        ("AO", "AO contribution (XRO - AO decoupled)", VLIM_ALL)]
+        ("ExPO", "ExPO contribution", VLIM_ALL),
+        ("IO", "IO contribution", VLIM_ALL),
+        ("AO", "AO contribution", VLIM_ALL)]
 PL = "abcdefgh"
 
 fig, axes = plt.subplots(4, 2, figsize=(13.2, 13.6), sharex=True, sharey=True)
@@ -104,7 +104,7 @@ for r, (name, rtitle, vlim) in enumerate(ROWS):
         im = ax.pcolormesh(xi, yi, Z, cmap="RdBu_r", vmin=-vlim, vmax=vlim, shading="auto")
         if r == 0: ims["top"] = im
         else: ims["sub"] = im
-        ax.set_title(f"({PL[r*2+c]}) {VAR_NAME[v]}: {rtitle}", loc="left", fontsize=FS["panel_title"])
+        ax.set_title(f"({PL[r*2+c]}) {VAR_NAME[v] if r == 0 else v}: {rtitle}", loc="left", fontsize=FS["panel_title"])
         ax.set_xticks(xticks); ax.set_xticklabels(xtlab)
         ax.set_yticks(yi); ax.set_yticklabels(ytlab)
         ax.invert_yaxis()
