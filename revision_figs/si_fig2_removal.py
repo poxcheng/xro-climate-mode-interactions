@@ -59,7 +59,7 @@ handles = [
     Line2D([], [], color=CC["LENSO"], lw=1.4, ls="--", label=r"removal after $L_{ENSO}\to$obs"),
 ]
 fig.legend(handles=handles, loc="lower center", ncol=4, fontsize=15.1, frameon=False,
-           bbox_to_anchor=(0.5, 0.0))
+           bbox_to_anchor=(0.5, -0.04))
 fig.suptitle(f"Coupling-removal experiments in the observed operator and {nM} CMIP operators\n"
              "tropical-mean composites of 9 ONI El Niño events, 1979-2010",
              fontsize=20.2)

@@ -87,9 +87,11 @@ ax.plot(xx, np.polyval(b2, xx), color="tab:blue", ls="--", lw=1.4)
 ax.axvline(0, color="gray", lw=0.6); ax.axhline(0, color="gray", lw=0.6)
 ax.set_xlabel("IOB index (s.d.)"); ax.set_ylabel("Tropical-mean SST (K)")
 ax.set_title("(c) As (b), IOB at single months tied to the Nino3.4 peak\nat the peak vs 2 months later", loc="left", fontsize=15.0)
-handles=[Line2D([],[],marker="^",mec="tab:blue",mfc="none",color="tab:blue",ls="--",label=f"IOB at the Nino3.4 peak month, r={r0:+.2f}"),
-         Line2D([],[],marker="o",color="tab:red",mec="k",ls="-",label=f"IOB 2 months after the peak, r={r2:+.2f}")]
-ax.legend(handles=handles, fontsize=13.4, loc="upper left")
+handles=[Line2D([],[],marker="^",mec="tab:blue",mfc="none",color="tab:blue",ls="--",label=f"IOB at the Nino3.4 peak, r={r0:+.2f}"),
+         Line2D([],[],marker="o",color="tab:red",mec="k",ls="-",label=f"IOB 2 months later, r={r2:+.2f}")]
+ax.legend(handles=handles, fontsize=10.2, loc="lower right",
+          handlelength=1.4, borderpad=0.25, labelspacing=0.25,
+          borderaxespad=0.15, handletextpad=0.5)
 print(f"IOB@N34pk r={r0:+.2f}; IOB@N34pk+2 r={r2:+.2f}")
 
 fig.suptitle("Observational support (ERA5 / ORAS5, no XRO): remote climate modes and El Nino-driven tropical-mean SST",

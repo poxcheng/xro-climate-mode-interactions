@@ -162,7 +162,7 @@ axe.annotate(f"r = {r_all:.2f} (n=12)", xy=(0.03, 0.03), xycoords="axes fraction
 axe.set_xlabel(r"coupling contribution, BASE - ($C_1$&$C_2=0$) (K)")
 axe.set_ylabel("residual warming, OBS - BASE (K)")
 axe.grid(alpha=0.2, lw=0.5)
-axe.set_title("(e) coupling pathways vs residual warming, Dec(0)-Jun(+1)",
+axe.set_title("(e) coupling vs residual warming",
               loc="left", fontsize=FS["panel_title"])
 cb = fig.colorbar(scd, ax=axe, pad=0.02, fraction=0.05)
 cb.set_label("event peak Nino3.4 (K)", fontsize=FS["axis_label"] - 1)
