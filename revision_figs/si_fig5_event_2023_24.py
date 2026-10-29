@@ -189,7 +189,7 @@ axf.axvline(0, color="0.6", lw=0.8)
 scf = axf.scatter(dW, resF, c=n34PK, s=120, cmap="RdBu_r", vmin=-VLIM, vmax=VLIM,
                   edgecolors="k", linewidths=0.9, zorder=5)
 OFF_F = {1997: (-50, -19), 2015: (-50, 7), 1982: (7, -16), 2019: (7, 7),
-         2004: (-46, -5), 2023: (7, 5)}
+         2004: (-46, -5), 2023: (8, -16)}
 for x0, y0v, yr in zip(dW, resF, YEARS12):
     axf.annotate(str(yr), (x0, y0v), xytext=OFF_F.get(yr, (7, 7)),
                  textcoords="offset points", fontsize=FS["annot"],
@@ -204,7 +204,7 @@ axf.grid(alpha=0.2, lw=0.5)
 axf.set_title("(f) pre-peak discharge vs residual, Jul(0)-Jun(+1)",
               loc="left", fontsize=FS["panel_title"])
 plt.setp(axf.get_yticklabels(), visible=False)
-cb = fig.colorbar(scf, ax=axf, pad=0.02, fraction=0.05)
+cb = fig.colorbar(scf, ax=axf, pad=0.02, fraction=0.05, shrink=0.88, anchor=(0.0, 0.0))
 cb.set_label("event peak Nino3.4 (K)", fontsize=FS["axis_label"] - 1)
 cb.ax.tick_params(labelsize=FS["tick"] - 1)
 
