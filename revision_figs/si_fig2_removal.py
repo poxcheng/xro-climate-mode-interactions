@@ -62,7 +62,7 @@ fig.legend(handles=handles, loc="lower center", ncol=4, fontsize=15.1, frameon=F
            bbox_to_anchor=(0.5, -0.04))
 fig.suptitle(f"Coupling-removal experiments in the observed operator and {nM} CMIP operators\n"
              "tropical-mean composites of 9 ONI El Niño events, 1979-2010",
-             fontsize=20.2)
+             fontsize=21.4, fontweight="bold")
 fig.tight_layout(rect=[0, 0.06, 1, 0.94])
 fig.savefig("rm1d_final.png", dpi=300, bbox_inches="tight")
 print("saved rm1d_final.png")

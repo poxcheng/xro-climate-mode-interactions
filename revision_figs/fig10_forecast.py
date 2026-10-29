@@ -70,7 +70,7 @@ for i, v in enumerate(("SST", "LTT")):
     if i == 0:
         h1,l1 = axes[i].get_legend_handles_labels(); h2,l2 = ax2.get_legend_handles_labels()
         ax2.legend(h1+h2, l1+l2, ncol=2, loc="upper left", frameon=True, fontsize=7.7)
-fig.suptitle("Pathway-variant forecasts by basin and feedback direction\nXRO initialised 2026-04", fontsize=13.2, fontweight="bold")
+fig.suptitle("Pathway-variant forecasts by basin and feedback direction\nXRO initialised 2026-04", fontsize=11.0, fontweight="bold")
 fig.tight_layout(rect=[0,0,1,0.95])
 fig.savefig("FigS_forecast_variants.png", dpi=300, bbox_inches="tight")
 print("done both figures")

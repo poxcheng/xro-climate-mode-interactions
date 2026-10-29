@@ -57,7 +57,7 @@ axes[0].legend(handles=[
 ], fontsize=10.2, frameon=False, loc="upper right", ncol=2)
 
 fig.suptitle("Individual mode contributions to the composite tropical-mean warming",
-             fontsize=13.8, fontweight="bold")
+             fontsize=12.0, fontweight="bold")
 fig.tight_layout(rect=[0, 0, 1, 0.97])
 fig.savefig("FigS_mode_contrib.png", dpi=300, bbox_inches="tight")
 print("saved FigS_mode_contrib.png")

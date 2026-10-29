@@ -94,7 +94,8 @@ ax.legend(handles=handles, fontsize=10.2, loc="lower right",
           borderaxespad=0.15, handletextpad=0.5)
 print(f"IOB@N34pk r={r0:+.2f}; IOB@N34pk+2 r={r2:+.2f}")
 
-fig.suptitle("Observational support (ERA5 / ORAS5, no XRO): remote climate modes and El Nino-driven tropical-mean SST",
-             fontsize=19.4, x=0.5, y=0.99)
+fig.suptitle("Observational support (ERA5 / ORAS5, no XRO)\n"
+             "remote climate modes and El Nino-driven tropical-mean SST",
+             fontsize=26.7, fontweight="bold", x=0.5, y=1.04)
 fig.savefig("obs_support_v25.png", dpi=300, bbox_inches="tight")
 print("saved")

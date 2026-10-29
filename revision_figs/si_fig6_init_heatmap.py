@@ -20,7 +20,7 @@ import numpy as np, pandas as pd, xarray as xr
 import matplotlib.pyplot as plt
 
 FS = {"base": 15.4, "panel_title": 16.1, "axis_label": 16.1, "tick": 14.7,
-      "legend": 11.5, "annot": 13.3, "suptitle": 17.5}
+      "legend": 11.5, "annot": 13.3, "suptitle": 20.1}
 plt.rcParams.update({"font.size": FS["base"], "axes.labelsize": FS["axis_label"],
                      "xtick.labelsize": FS["tick"], "ytick.labelsize": FS["tick"]})
 
